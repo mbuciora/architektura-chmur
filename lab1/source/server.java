@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.text.SimpleDateFormat;  
+import java.util.Date;  
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -18,12 +20,15 @@ public class Test {
     static class MyHandler implements HttpHandler {
         @Override
         public void handle(HttpExchange t) throws IOException {
-            String response = "Hello World from java!\n";
+	        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");  
+            Date date = new Date();  
+            String response = "Hello World from java!\n" + formatter.format(date);
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
             os.write(response.getBytes());
             os.close();
 	    System.out.println("Served hello world...");
+	    System.out.println(formatter.format(date));
         }
     }
 
