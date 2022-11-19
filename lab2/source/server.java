@@ -36,7 +36,7 @@ public class Test {
             } else if (params.containsKey("time")) {
                 response = formatter.format(date);
             } else if (params.containsKey("rev") && params.containsKey("str")) {
-                response = reverse(params.get("str"))
+                reverse = params.get("str");
             }
             t.sendResponseHeaders(200, response.length());
             OutputStream os = t.getResponseBody();
