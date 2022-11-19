@@ -1,5 +1,5 @@
-docker_name:=lab0_test_java
-container_name:=lab0_test_container_java
+docker_name:=lab2_227315
+container_name:=lab2_container_227315
 
 docker_build:
 	echo "Prepare docker here..."
