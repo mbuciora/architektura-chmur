@@ -39,12 +39,24 @@ public class Test {
                 response = formatter.format(date);
             } else if (params.get("cmd").equals("rev")) {
                 String str = params.get("str");
-            	String nstr = "";
+                Integer lowerCase = 0;
+                Integer upperCase = 0;
+                Integer numbers = 0;
+                Integer specialCharacters = 0;
+
             	for (int i=0; i<str.length(); i++) {
                     char ch= str.charAt(i);
-                    nstr= ch+nstr;
+                    if (ch >= 'A' && ch <= 'Z')
+                        upperCase++;
+                    else if (ch >= 'a' && ch <= 'z')
+                        lowerCase++;
+                    else if (ch >= '0' && ch <= '9')
+                        numbers++;
+                    else
+                        specialCharacters++;
                 }
-                response += nstr;
+                
+                response =  "{\"lowercase\":" + lowerCase.toString() + ",\"uppercase\":" + upperCase.toString() + ",\"digits\":" + numbers.toString() + ",\"special\":" + specialCharacters.toString() + "}";
             }
 
             t.sendResponseHeaders(200, response.length());
