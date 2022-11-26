@@ -33,11 +33,7 @@ public class Test {
 
             if (params == null) {
                 response = "Hello World from java!\n";
-            } else if (params.get("cmd").equals("time")) {
-                SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss");  
-                Date date = new Date(); 
-                response = formatter.format(date);
-            } else if (params.get("cmd").equals("rev")) {
+            } else if (params.get("str").length() != 0) {
                 String str = params.get("str");
                 Integer lowerCase = 0;
                 Integer upperCase = 0;
